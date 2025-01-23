@@ -2,10 +2,15 @@ import * as React from 'react';
 
 export default function ImageGallery() {
   return (
-    <div className="w-full max-w-5xl mx-auto p-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {itemData.map((item) => (
-          <div key={item.img} className="relative overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full max-w-7xl mx-auto p-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-fr">
+        {itemData.map((item, index) => (
+          <div
+            key={item.img}
+            className={`relative overflow-hidden rounded-lg shadow-lg ${
+              index % 5 === 0 ? 'row-span-2 col-span-2' : ''
+            } ${index % 4 === 0 ? 'row-span-2' : ''}`}
+          >
             <img
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               src={`${item.img}?w=248&fit=crop&auto=format`}
